@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Wishlist:</strong>
+  <%= @user.wishlist_id %>
+</p>
+
+<p>
+  <strong>Ignore shops:</strong>
+  <%= @user.ignore_shops %>
+</p>
+
+<p>
+  <strong>Ignore books:</strong>
+  <%= @user.ignore_books %>
+</p>
+
+<p>
+  <strong>Last latitude:</strong>
+  <%= @user.last_latitude %>
+</p>
+
+<p>
+  <strong>Last longitude:</strong>
+  <%= @user.last_longitude %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
