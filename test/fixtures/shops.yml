@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  book_id: 1
+  latitude: 1.5
+  longitude: 1.5
+  open_time: 2013-09-18 13:29:15
+  close_time: 2013-09-18 13:29:15
+  adress: MyString
+  memo: MyString
+
+two:
+  name: MyString
+  book_id: 1
+  latitude: 1.5
+  longitude: 1.5
+  open_time: 2013-09-18 13:29:15
+  close_time: 2013-09-18 13:29:15
+  adress: MyString
+  memo: MyString

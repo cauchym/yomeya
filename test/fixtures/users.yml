@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  password: MyString
+  wishlist_id: 1
+  ignore_shops: MyText
+  ignore_books: MyText
+  last_latitude: 1.5
+  last_longitude: 1.5
+  role: 1
+
+two:
+  email: MyString
+  password: MyString
+  wishlist_id: 1
+  ignore_shops: MyText
+  ignore_books: MyText
+  last_latitude: 1.5
+  last_longitude: 1.5
+  role: 1

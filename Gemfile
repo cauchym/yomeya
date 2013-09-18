@@ -18,7 +18,7 @@ gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-#gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '2.2.1'
@@ -48,7 +48,9 @@ end
 
 
 # for Bootstrap
-gem 'less-rails'
-gem 'twitter-bootstrap-rails'
-gem 'execjs'
+#gem 'less-rails'
+#gem 'twitter-bootstrap-rails'
+#gem 'execjs'
+
+gem 'protected_attributes'
 
