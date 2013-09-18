@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  name: MyString
+  book_id: 1
+  shop_id: 1
+  notice: false
+  distance: 1
+
+two:
+  url: MyString
+  name: MyString
+  book_id: 1
+  shop_id: 1
+  notice: false
+  distance: 1

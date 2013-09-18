@@ -1,0 +1,332 @@
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-17 20:31:34 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/cauchym/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.4ms)
+Completed 200 OK in 79ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2013-09-17 20:31:37 +0900
+Processing by Rails::InfoController#properties as */*
+  Rendered /Users/cauchym/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/railties-4.0.0/lib/rails/templates/rails/info/properties.html.erb (0.6ms)
+Completed 200 OK in 32ms (Views: 16.2ms | ActiveRecord: 2.2ms)
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20130918042834)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password" varchar(255), "wishlist_id" integer, "ignore_shops" text, "ignore_books" text, "last_latitude" float, "last_longitude" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042834"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWishlists (20130918042910)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042910"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateShops (20130918042915)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "shops" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "book_id" integer, "latitude" float, "longitude" float, "open_time" time, "close_time" time, "adress" varchar(255), "memo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042915"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBooks (20130918042921)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "image" varchar(255), "author" varchar(255), "isbn" integer, "value" integer, "wishlist_id" integer, "shop_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042921"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-18 13:31:26 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 69ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2013-09-18 13:31:33 +0900
+
+ActionController::RoutingError (No route matches [GET] "/user"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (74.9ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (146.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 13:31:36 +0900
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 513ms (Views: 509.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/shops.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/wishlists.css?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/wishlists.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-18 13:31:37 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWishlists (20130918044719)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "wishlists" already exists: CREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWishlists (20130918044833)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "wishlists" already exists: CREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20130918042834)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password" varchar(255), "wishlist_id" integer, "ignore_shops" text, "ignore_books" text, "last_latitude" float, "last_longitude" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042834"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateShops (20130918042915)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "shops" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "book_id" integer, "latitude" float, "longitude" float, "open_time" time, "close_time" time, "adress" varchar(255), "memo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042915"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBooks (20130918042921)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "image" varchar(255), "author" varchar(255), "isbn" integer, "value" integer, "wishlist_id" integer, "shop_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042921"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWishlists (20130918044833)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918044833"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 13:51:19 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 50ms
+
+RuntimeError (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:7:in `index'
+
+
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 13:52:03 +0900
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+RuntimeError (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:7:in `index'
+
+
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/cauchym/.rbenv/versions/2.0.0-p195/lib/ruby/gems/2.0.0/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 14:00:04 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 200ms (Views: 175.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:04 +0900
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:04 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:04 +0900
+
+
+Started GET "/assets/shops.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:04 +0900
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/wishlists.css?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/wishlists.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-18 14:00:05 +0900
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-09-18 14:00:07 +0900
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (124.3ms)
+  Rendered users/new.html.erb within layouts/application (148.2ms)
+Completed 200 OK in 184ms (Views: 182.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 14:04:10 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateShops (20130918042915)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "shops" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "book_id" integer, "latitude" float, "longitude" float, "open_time" time, "close_time" time, "adress" varchar(255), "memo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042915"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBooks (20130918042921)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "image" varchar(255), "author" varchar(255), "isbn" integer, "value" integer, "wishlist_id" integer, "shop_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918042921"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWishlists (20130918044833)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "wishlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "name" varchar(255), "book_id" integer, "shop_id" integer, "notice" boolean, "distance" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918044833"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20130918051053)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password" varchar(255), "wishlist_id" integer, "ignore_shops" text, "ignore_books" text, "last_latitude" float, "last_longitude" float, "role" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130918051053"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/users" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/shops.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/wishlists.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/shops.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/wishlists.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-18 14:11:33 +0900
