@@ -6,8 +6,8 @@ class Book < ActiveRecord::Base
 	has_and_belongs_to_many :shops
 	has_and_belongs_to_many :wishlists
 
-	validates :title :presence => true
-	validates :author :presence => true
-	validates :value :presence => true
+	validates :title, :presence => true
+	validates :author, :presence => true
+	validates :value, :presence => true
 
 end

@@ -54,3 +54,4 @@ end
 
 gem 'protected_attributes'
 
+gem 'geokit-rails'
