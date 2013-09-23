@@ -63,11 +63,21 @@ class ShopsController < ApplicationController
   end
   
   def search
-  
-  	@shop = Shop.find(:all, :origin => [35.681382,139.766084],:within=>10);
-
+  	#検索範囲(km)
+  	#@rng = params[:rng]
+  	#経度
+  	@lat = params[:latitude]
+  	#緯度
+  	@lng = params[:longitude]
+  	
+  	@shop_all = Shop.all
+  	#範囲内の店舗情報取得
+  	@shop = Shop.within(10,:origin => [@lat,@lng])
+  	
+  	#jsonへ書き出し
+  	render:json => @shop
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop

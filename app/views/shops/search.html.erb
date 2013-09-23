@@ -1,3 +1,6 @@
+<%= @lat %>
+<%= @lng %>
+
 <table>
   <thead>
     <tr>
@@ -17,6 +20,42 @@
 
   <tbody>
     <% @shop.each do |shop| %>
+      <tr>
+        <td><%= shop.name %></td>
+        <td><%= shop.book_id %></td>
+        <td><%= shop.latitude %></td>
+        <td><%= shop.longitude %></td>
+        <td><%= shop.open_time %></td>
+        <td><%= shop.close_time %></td>
+        <td><%= shop.adress %></td>
+        <td><%= shop.memo %></td>
+        <td><%= link_to 'Show', shop %></td>
+        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Book</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Open time</th>
+      <th>Close time</th>
+      <th>Adress</th>
+      <th>Memo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shop_all.each do |shop| %>
       <tr>
         <td><%= shop.name %></td>
         <td><%= shop.book_id %></td>
