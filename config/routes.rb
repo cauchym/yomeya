@@ -5,13 +5,11 @@ Yomeya::Application.routes.draw do
 
   resources :books
   
+  #店舗情報の検索ルーティング
+  get "/search" => "shops#search"
+  
   resources :shops
-  
-  #map.resources :shops, :collection => { :search => :get }
-  
 
-  #get "shops",:controller => :shops, :action => :search
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
