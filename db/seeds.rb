@@ -13,6 +13,8 @@ require "rubygems"
 require "nokogiri"
 require 'mechanize'
 require 'kconv'
+require 'net/http'
+require 'json'
 
 # users_name = ['社長', 'なっくる', 'kikunantoka', 'こし']
 # users = User.all
@@ -22,6 +24,18 @@ require 'kconv'
 #   end
 # end
 # users = User.all
+
+def geocode(address)
+   address = URI.encode(address)
+   hash = Hash.new
+   baseUrl = "http://maps.google.com/maps/api/geocode/json"
+   reqUrl = "#{baseUrl}?address=#{address}&sensor=false&language=ja"
+   response = Net::HTTP.get_response(URI.parse(reqUrl))
+   status = JSON.parse(response.body)
+   hash['lat'] = status['results'][0]['geometry']['location']['lat']
+   hash['lng'] = status['results'][0]['geometry']['location']['lng']
+   return hash
+end
 
 shops = Shop.all
 if shops.blank?
@@ -60,6 +74,8 @@ if shops.blank?
 			shop_address = shop_address.delete("地図を見る")
 		end
 	# 	puts address
+	
+		shop_geo = geocode(shop_address)
 		
 		open_time = agent.page.at('.store_description h5 span').text.strip
 	# 	puts open_time
@@ -71,7 +87,7 @@ if shops.blank?
 		
 	# 	puts("----------------------------------")
 	
-		Shop.create(:name => shop_name,:latitude => 10.0,:longitude => 10.0,:adress => shop_address)	
+		Shop.create(:name => shop_name,:latitude => shop_geo['lat'],:longitude => shop_geo['lng'],:adress => shop_address)	
 	
 	end
 	# -------------------------------
