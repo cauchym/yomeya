@@ -1,6 +1,5 @@
 class Shop < ActiveRecord::Base
 
-
 	attr_accessible :wishlist_id, :book_id, :shop_id, :name, :latitude, :longitude, :open_time, :close_time, :adress
 	attr_accessor :book_title, :shop_name
 	
