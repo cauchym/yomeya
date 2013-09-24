@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20130918051053) do
 
   create_table "shops", force: true do |t|
     t.string   "name"
-    t.integer  "book_id"
+    t.text     "book_id"
     t.float    "latitude"
     t.float    "longitude"
     t.time     "open_time"

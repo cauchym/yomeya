@@ -103,7 +103,6 @@ def wishlist_scraping(r_url)
 		num += 1;
 	end
 
-
 	p @book_id
 	p "###########################################################################"
 	concat_str = @book_id.join(",")
