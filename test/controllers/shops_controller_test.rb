@@ -18,7 +18,7 @@ class ShopsControllerTest < ActionController::TestCase
 
   test "should create shop" do
     assert_difference('Shop.count') do
-      post :create, shop: { adress: @shop.adress, book_id: @shop.book_id, close_time: @shop.close_time, latitude: @shop.latitude, longitude: @shop.longitude, memo: @shop.memo, name: @shop.name, open_time: @shop.open_time }
+      post :create, shop: { address: @shop.address, book_id: @shop.book_id, close_time: @shop.close_time, latitude: @shop.latitude, longitude: @shop.longitude, memo: @shop.memo, name: @shop.name, open_time: @shop.open_time }
     end
 
     assert_redirected_to shop_path(assigns(:shop))
@@ -35,7 +35,7 @@ class ShopsControllerTest < ActionController::TestCase
   end
 
   test "should update shop" do
-    patch :update, id: @shop, shop: { adress: @shop.adress, book_id: @shop.book_id, close_time: @shop.close_time, latitude: @shop.latitude, longitude: @shop.longitude, memo: @shop.memo, name: @shop.name, open_time: @shop.open_time }
+    patch :update, id: @shop, shop: { address: @shop.address, book_id: @shop.book_id, close_time: @shop.close_time, latitude: @shop.latitude, longitude: @shop.longitude, memo: @shop.memo, name: @shop.name, open_time: @shop.open_time }
     assert_redirected_to shop_path(assigns(:shop))
   end
 

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20130918051053) do
     t.float    "longitude"
     t.time     "open_time"
     t.time     "close_time"
-    t.string   "adress"
+    t.string   "address"
     t.string   "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20130918051053) do
   create_table "wishlists", force: true do |t|
     t.string   "url"
     t.string   "name"
+    t.integer  "scrape_status"
     t.integer  "book_id"
     t.integer  "shop_id"
     t.boolean  "notice"

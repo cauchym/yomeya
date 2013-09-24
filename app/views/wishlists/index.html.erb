@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Url</th>
+      <th>ScrapeStatus</th>
       <th>Name</th>
       <th>Book</th>
       <th>Shop</th>
@@ -19,7 +20,8 @@
     <% @wishlists.each do |wishlist| %>
       <tr>
         <td><%= wishlist.url %></td>
-        <td><%= wishlist.name %></td>
+        <td><%= wishlist.scrape_status %></td>
+        <td><%= wishlist.name %></td>      
         <td><%= wishlist.book_id %></td>
         <td><%= wishlist.shop_id %></td>
         <td><%= wishlist.notice %></td>

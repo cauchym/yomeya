@@ -7,7 +7,7 @@ class CreateShops < ActiveRecord::Migration
       t.float :longitude
       t.time :open_time
       t.time :close_time
-      t.string :adress
+      t.string :address
       t.string :memo
 
       t.timestamps

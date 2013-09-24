@@ -94,9 +94,9 @@ if shops.blank?
 		
 	# 	puts("----------------------------------")
 	
-		Shop.create(:name => shop_name,:latitude => 0,:longitude => 0,:adress => shop_address)	
+		Shop.create(:name => shop_name,:latitude => 0,:longitude => 0,:address => shop_address)	
 
-# 		Shop.create(:name => shop_name,:latitude => shop_geo['lat'],:longitude => shop_geo['lng'],:adress => shop_address)	
+# 		Shop.create(:name => shop_name,:latitude => shop_geo['lat'],:longitude => shop_geo['lng'],:address => shop_address)	
 	
 
 	end

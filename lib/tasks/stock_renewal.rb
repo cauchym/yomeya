@@ -49,7 +49,7 @@ class Stock_renewal
 						
 		end
 		
-# 		Shop.create(:name => "hogehoge",:latitude => 10.0,:longitude => 10.0,:adress => "hogehoge")
+# 		Shop.create(:name => "hogehoge",:latitude => 10.0,:longitude => 10.0,:address => "hogehoge")
 	end
 end
 
