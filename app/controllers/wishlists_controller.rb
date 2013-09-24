@@ -101,6 +101,24 @@ def wishlist_scraping(r_url)
 		num += 1;
 	end
 
+
+#	p @book_id
+#	p "###########################################################################"
+	concat_str = @book_id.join(",")
+	# @book_id.each do |id|
+	# 	concat_str += (id.to_s + ",")
+	# 	p concat_str
+	# end
+
+#	p Wishlist.column_names
+#	p url
+	@wishlist = Wishlist.where(:url => r_url).first
+#	p @wishlist.inspect
+    if !@wishlist
+		@wishlist = Wishlist.new
+	end
+	@wishlist.book_id = concat_str
+	@wishlist.save
 end
 
 class WishlistsController < ApplicationController
