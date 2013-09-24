@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(version: 20130918051053) do
     t.string   "title"
     t.string   "image"
     t.string   "author"
-    t.integer  "isbn"
+    t.string   "isbn"
     t.integer  "value"
     t.integer  "wishlist_id"
     t.integer  "shop_id"
+    t.boolean  "ignore"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

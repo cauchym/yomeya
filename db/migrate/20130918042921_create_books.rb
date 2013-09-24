@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.string :author
-      t.integer :isbn
+      t.string :isbn
       t.integer :value
       t.integer :wishlist_id
       t.integer :shop_id
