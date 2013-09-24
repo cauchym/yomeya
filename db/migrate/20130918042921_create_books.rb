@@ -7,7 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :isbn
       t.integer :value
       t.integer :wishlist_id
-      t.integer :shop_id
+      t.text :shop_id
 
       t.timestamps
     end

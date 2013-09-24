@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 20130918051053) do
     t.string   "isbn"
     t.integer  "value"
     t.integer  "wishlist_id"
-    t.integer  "shop_id"
-    t.boolean  "ignore"
+    t.text     "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
