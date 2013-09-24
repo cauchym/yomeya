@@ -1,3 +1,6 @@
+class WishlistsController < ApplicationController
+  before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
+
 require "open-uri"
 require "rubygems"
 require "nokogiri"
@@ -9,8 +12,8 @@ def wishlist_scraping(r_url)
 	page_num = 1
 	
 	agent = Mechanize.new
-	
-	
+	@book_id = []
+
 	while num < page_num + 1 do
 	
 		url = r_url + "/ref=cm_wl_sortbar_v_page_" + num.to_s + "??_encoding=UTF8&filter=3&layout=standard&page=" + num.to_s + "&reveal=unpurchased&sort=date-added"
@@ -75,24 +78,24 @@ def wishlist_scraping(r_url)
 						
 						itemWrapper.css('.productImage > a > img').each do |image|
 						  # 本の画像のURL出力
-						  out_image = image.attribute("src").to_s
+							out_image = image.attribute("src").to_s
 						end
 			  		
 			  		itemWrapper.css('span.wlPriceBold').each do |price|					  
 						  # 本の価格出力
-						  out_price = price.text.strip.to_s
-						  if out_price.include?("¥")
-								out_price = out_price.delete("¥")
-							end
-							if out_price.include?(",")
-								out_price = out_price.delete(",")
-							end
-							out_price = out_price.to_i
-						  
+						out_price = price.text.strip.to_s
+						if out_price.include?("¥")
+							out_price = out_price.delete("¥")
 						end
-						if out_isbn.present? 
-							Book.create(:title => out_title,:image => out_image,:author => out_author,:isbn => out_isbn,:value => out_price)	
-			  		end
+						if out_price.include?(",")
+							out_price = out_price.delete(",")
+						end
+						out_price = out_price.to_i  
+					end
+					if out_isbn.present?
+						@book_id.push out_isbn
+						Book.create(:title => out_title,:image => out_image,:author => out_author,:isbn => out_isbn,:value => out_price)	
+		  			end
 			  	end
 			  end
 			end
@@ -101,8 +104,8 @@ def wishlist_scraping(r_url)
 	end
 
 
-#	p @book_id
-#	p "###########################################################################"
+	p @book_id
+	p "###########################################################################"
 	concat_str = @book_id.join(",")
 	# @book_id.each do |id|
 	# 	concat_str += (id.to_s + ",")
@@ -120,8 +123,6 @@ def wishlist_scraping(r_url)
 	@wishlist.save
 end
 
-class WishlistsController < ApplicationController
-  before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
 
   # GET /wishlists
   # GET /wishlists.json

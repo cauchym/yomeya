@@ -4,8 +4,8 @@ class CreateWishlists < ActiveRecord::Migration
       t.string :url
       t.string :name
       t.integer :scrape_status
-      t.integer :book_id
-      t.integer :shop_id
+      t.text :book_id
+      t.text :shop_id
       t.boolean :notice
       t.integer :distance
 
