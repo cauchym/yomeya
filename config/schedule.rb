@@ -26,9 +26,9 @@
 set :environment, :development
 set :output, { :error => 'log/error.log', :standard => 'log/cron.log' }
 
-# every 1.minutes do
-# 	runner "Stock_renewal.test"
-# end
+every 1.minutes do
+	runner "Stock_renewal.test"
+end
 
 # --------------------
 # finish

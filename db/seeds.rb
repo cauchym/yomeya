@@ -32,9 +32,16 @@ def geocode(address)
    reqUrl = "#{baseUrl}?address=#{address}&sensor=false&language=ja"
    response = Net::HTTP.get_response(URI.parse(reqUrl))
    status = JSON.parse(response.body)
-   hash['lat'] = status['results'][0]['geometry']['location']['lat']
-   hash['lng'] = status['results'][0]['geometry']['location']['lng']
-   return hash
+   if status['results'][0]['geometry']['location']['lat'].present?
+		hash['lat'] = status['results'][0]['geometry']['location']['lat']
+		hash['lng'] = status['results'][0]['geometry']['location']['lng']
+		return hash
+	 else
+	 	hash['lat'] = 0
+	 	hash['lng'] = 0
+	 	return hash
+	 end
+	 
 end
 
 shops = Shop.all
@@ -74,8 +81,8 @@ if shops.blank?
 			shop_address = shop_address.delete("地図を見る")
 		end
 	# 	puts address
-	
-		shop_geo = geocode(shop_address)
+		
+# 		shop_geo = geocode(shop_address)
 		
 		open_time = agent.page.at('.store_description h5 span').text.strip
 	# 	puts open_time
@@ -87,8 +94,11 @@ if shops.blank?
 		
 	# 	puts("----------------------------------")
 	
-		Shop.create(:name => shop_name,:latitude => shop_geo['lat'],:longitude => shop_geo['lng'],:adress => shop_address)	
+		Shop.create(:name => shop_name,:latitude => 0,:longitude => 0,:adress => shop_address)	
+
+# 		Shop.create(:name => shop_name,:latitude => shop_geo['lat'],:longitude => shop_geo['lng'],:adress => shop_address)	
 	
+
 	end
 	# -------------------------------
 	# 終わり

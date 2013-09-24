@@ -36,6 +36,7 @@ gem 'jbuilder', '1.2'
 gem 'nokogiri'
 gem 'mechanize'
 gem 'whenever', :require => false
+gem 'json'
 
 # --------------------
 # finish
