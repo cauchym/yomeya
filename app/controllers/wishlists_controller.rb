@@ -97,7 +97,6 @@ def wishlist_scraping(r_url)
 			  end
 			end
 		end
-		
 		num += 1;
 	end
 
