@@ -69,8 +69,7 @@ def wishlist_scraping(r_url)
 							# -------------------------------
 											
 						end
-						
-			  		
+									  		
 			  		# 著者出力
 			  		out_author = author.text.strip
 			  		# 本の型出力
@@ -94,7 +93,12 @@ def wishlist_scraping(r_url)
 					end
 					if out_isbn.present?
 						@book_id.push out_isbn
-						Book.create(:title => out_title,:image => out_image,:author => out_author,:isbn => out_isbn,:value => out_price)	
+						exist_book = Book.find_by isbn: out_isbn
+						if exist_book.nil?
+							out_shop_id = Book.Stock_renewal(out_isbn,1)
+	# 						Book.create(:title => out_title,:image => out_image,:author => out_author,:isbn => out_isbn,:value => out_price)	
+							Book.create(:title => out_title,:image => out_image,:author => out_author,:isbn => out_isbn,:value => out_price,:shop_id => out_shop_id)	
+						end
 		  			end
 			  	end
 			  end

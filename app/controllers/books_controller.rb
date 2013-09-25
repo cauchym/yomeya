@@ -7,60 +7,61 @@ require 'kconv'
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
-  def Stock_renewal(isbn)
-		shop_array = []
-		book_array = []
-		shop_name = ""
-		isbn = isbn.to_s
-	
-		url = "http://www.junkudo.co.jp/mj/products/list.php"
-		agent = Mechanize.new
-		page = agent.get(url)
-		
-		agent.page.form_with(:id => 'mjSearchForm') {|f|
-		  f['search_text'] = isbn.toutf8
-		  f.click_button
-		}
-		agent.page.link_with(:text => "詳細".toutf8).click
-		
-		stock_url =  agent.page.uri
-		stock_url = stock_url.to_s.sub("detail", "stock")
-		
-		page = agent.get(stock_url)
-					
-		agent.page.search('.table-mini td:first-child').each do |shop|
-			shop_name = shop.text.strip
-			if shop_name.include?(" ") 
-				shop_name = shop_name.delete(" ")
-			end
-			if shop_name.include?("　") 
-				shop_name = shop_name.delete("　")
-			end
-			
-			shop = Shop.find_by name: shop_name
-			if shop.book_id.nil?
-				shop.book_id = isbn.to_s
-				shop.save
-			else
-				if shop.book_id.to_s.include?(isbn)
-				else
-					book_array = shop.book_id.split(",")
-					book_array.push isbn
-					book_str = book_array.join(",")
-					shop.book_id = book_str
-					shop.save
-				end
-			end
-			shop_array.push shop.id
-		end
-		
-		shop_str = shop_array.join(",")
-			
-		@book = Book.find_by isbn: isbn
-		@book.shop_id = shop_str
-		@book.save
-		
-	end
+#   def Stock_renewal(isbn)
+# 		shop_array = []
+# 		book_array = []
+# 		shop_name = ""
+# 		isbn = isbn.to_s
+# 	
+# 		url = "http://www.junkudo.co.jp/mj/products/list.php"
+# 		agent = Mechanize.new
+# 		page = agent.get(url)
+# 		
+# 		agent.page.form_with(:id => 'mjSearchForm') {|f|
+# 		  f['search_text'] = isbn.toutf8
+# 		  f.click_button
+# 		}
+# 		agent.page.link_with(:text => "詳細".toutf8).click
+# 		
+# 		stock_url =  agent.page.uri
+# 		stock_url = stock_url.to_s.sub("detail", "stock")
+# 		
+# 		page = agent.get(stock_url)
+# 					
+# 		agent.page.search('.table-mini td:first-child').each do |shop|
+# 			shop_name = shop.text.strip
+# 			if shop_name.include?(" ") 
+# 				shop_name = shop_name.delete(" ")
+# 			end
+# 			if shop_name.include?("　") 
+# 				shop_name = shop_name.delete("　")
+# 			end
+# 			
+# 			shop = Shop.find_by name: shop_name
+# 			if shop.book_id.nil?
+# 				shop.book_id = isbn.to_s
+# 				shop.save
+# 			else
+# 				if shop.book_id.to_s.include?(isbn)
+# 				else
+# 					book_array = shop.book_id.split(",")
+# 					book_array.push isbn
+# 					book_str = book_array.join(",")
+# 					shop.book_id = book_str
+# 					shop.save
+# 				end
+# 			end
+# 			shop_array.push shop.id
+# 		end
+# 		
+# 		shop_str = shop_array.join(",")
+# 			
+# 		@book = Book.find_by isbn: isbn
+# 		@book.shop_id = shop_str
+# 		@book.save
+# 		
+# 	
+# 	end
   
   # GET /books
   # GET /books.json
@@ -90,7 +91,6 @@ class BooksController < ApplicationController
       if @book.save
         format.html { redirect_to @book, notice: book_params }
         format.json { render action: 'show', status: :created, location: @book }
-        Stock_renewal(book_params["isbn"])
       else
         format.html { render action: 'new' }
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -105,7 +105,7 @@ class BooksController < ApplicationController
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { head :no_content }
-        Stock_renewal(book_params["isbn"])
+#         Stock_renewal(book_params["isbn"])
       else
         format.html { render action: 'edit' }
         format.json { render json: @book.errors, status: :unprocessable_entity }
