@@ -67,3 +67,5 @@ end
 gem 'protected_attributes'
 
 gem 'geokit-rails'
+
+gem 'apns'

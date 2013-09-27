@@ -8,6 +8,8 @@ Yomeya::Application.routes.draw do
   #店舗情報の検索ルーティング
   get "/search" => "shops#search"
   
+  get "/notification" => "notifications#notification"
+  
   resources :shops
 
   # The priority is based upon order of creation: first created -> highest priority.

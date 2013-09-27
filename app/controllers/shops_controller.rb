@@ -72,10 +72,13 @@ class ShopsController < ApplicationController
   	
   	@shop_all = Shop.all
   	#範囲内の店舗情報取得
-  	@shop = Shop.within(10,:origin => [@lat,@lng])
+  	@shop = Shop.within(1,:origin => [@lat,@lng]).order('id DESC')
   	
   	#jsonへ書き出し
-  	render:json => @shop
+  	respond_to do |format|
+  		format.html
+  		format.json{render:json => @shop}
+  	end
   end
 
   private
